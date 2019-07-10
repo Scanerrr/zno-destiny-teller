@@ -11,6 +11,7 @@ app.use(require("morgan")("combined"));
 
 // Bot endpoint
 app.post("/bot", (req, res) => {
+  console.log("Received body: ", req.body);
   res.send();
 });
 
