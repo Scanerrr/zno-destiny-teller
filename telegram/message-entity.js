@@ -1,3 +1,7 @@
+/**
+ * @class
+ * @type {MessageEntity}
+ */
 class MessageEntity {
   constructor({ offset, length, type, url, user }) {
     this.offset = offset;
@@ -16,6 +20,7 @@ class MessageEntity {
   }
 }
 
+/** @type {MessageEntityTypes} */
 MessageEntity.types = {
   HASHTAG: "hashtag",
   CASHTAG: "cashtag",
