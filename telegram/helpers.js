@@ -1,10 +1,10 @@
 module.exports = {
   validators: {
     isValidMessage: function isValidMessage(message) {
-      return message && message.text && message.entities;
+      return message && message.text;
     },
     hasEntities: function hasEntities(message) {
-      return message.entities.length;
+      return message.entities && message.entities.length;
     }
   }
 };
