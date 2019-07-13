@@ -14,6 +14,7 @@ module.exports = {
     port: process.env.DB_PORT,
     uri: process.env.DB_URI
   },
+  zno_portal_url: process.env.ZNO_PORTAL_URL,
   chatID: process.env.TELEGRAM_CHAT_ID,
   login: process.env.ZNO_LOGIN,
   password: process.env.ZNO_PASSWORD,

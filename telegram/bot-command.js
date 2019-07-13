@@ -1,12 +1,33 @@
-class BotCommand {
+require("./message-entity.td");
+
+class Command {
+  constructor(command, params) {
+    this.command = command;
+    this.params = params;
+  }
+}
+
+class BotCommand extends Command {
+  /**
+   *
+   * @param {MessageEntity} messageEntity
+   * @param {String} messageText
+   */
   constructor(messageEntity, messageText) {
-    this.command = messageText.slice(
+    const command = messageText.slice(
       messageEntity.offset + 1,
       messageEntity.length
     );
 
-    this.params = messageText.slice(messageEntity.length + 1).split(" ");
+    const params = messageText.slice(messageEntity.length + 1).split(" ");
+
+    super(command, params);
   }
 }
 
-module.exports = BotCommand;
+BotCommand.types = {
+  REGISTER: "register",
+  RESULTS: "results"
+};
+
+module.exports = { BotCommand, Command };
