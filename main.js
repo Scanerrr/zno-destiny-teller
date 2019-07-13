@@ -1,4 +1,5 @@
 const express = require("express");
+const User = require("./models/user");
 const { Telegram, MessageEntity, BotCommand } = require("./telegram");
 
 const {
@@ -36,7 +37,7 @@ app.post("/initialize_bot", async (req, res) => {
 app.post("/bot", async (req, res) => {
   const { message } = req.body;
 
-  if (!isValidMessage(message) && !hasEntities(message)) return res.send();
+  if (!isValidMessage(message) || !hasEntities(message)) return res.send();
 
   // get the fisrt incoming entity
   const entity = new MessageEntity(message.entities[0]);
@@ -47,6 +48,15 @@ app.post("/bot", async (req, res) => {
   const command = new BotCommand(entity, message.text);
 
   console.log(command);
+
+  // TODO: check inserted data
+  const userCredentials = {
+    username: command.params[0],
+    password: command.params[1]
+  };
+
+  const user = await new User(userCredentials).insert();
+
   return res.send();
 });
 
