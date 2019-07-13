@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "check if zno page has result page",
   "main": "index.js",
+  "engineStrict": true,
+  "engines": {
+    "node": ">=11.8"
+  },
   "dependencies": {
     "axios": "^0.19.0",
     "body-parser": "^1.19.0",
@@ -13,16 +17,21 @@
     "puppeteer": "^1.18.1"
   },
   "devDependencies": {
+    "@types/jest": "^24.0.15",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.2.0",
     "eslint-config-prettier": "^6.0.0",
     "eslint-plugin-import": "^2.18.0",
+    "eslint-plugin-jest": "^22.7.2",
     "eslint-plugin-prettier": "^3.1.0",
+    "jest": "^24.8.0",
     "nodemon": "^1.19.1",
     "prettier": "^1.18.2"
   },
   "scripts": {
-    "start": "nodemon main.js"
+    "start": "nodemon main.js",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "author": "Scanerrr",
   "license": "ISC"
